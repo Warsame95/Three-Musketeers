@@ -42,8 +42,13 @@ def string_to_location(s):
        is outside of the correct range (between 'A' and 'E' for s[0] and
        between '1' and '5' for s[1]
        """
+    # s = input()
     axis_converter = {"A":0,"B":1,"C":2,"D":3,"E":4,"1":0,"2":1,"3":2,"4":3,"5":4}
-    return (axis_converter[s[0]],axis_converter[s[1]])
+
+    try:
+        return (axis_converter[s[0]],axis_converter[s[1]])
+    except KeyError:
+        print("Invalid location")
     
 
 def location_to_string(location):

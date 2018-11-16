@@ -34,7 +34,7 @@ def test_get_board():
     #eventually add at least one more test with another board
 
 def test_string_to_location():
-    with pytest.raises(ValueError):
+    with pytest.raises(KeyError, message = "Invalid location"):
         string_to_location('X3')
     assert string_to_location('A0') == (0,0)
     #eventually add at least one more exception test and two more
@@ -44,8 +44,10 @@ def test_location_to_string():
     assert location_to_string((2,2)) == "C3"
 
 def test_at():
-     assert at((1,2)) == r
-     assert at((4,0)) == m
+     assert at((1,1)) == _
+     assert at((4,3)) == R
+     assert at((2,2)) == M
+     assert at((0,3)) == M
 
 def test_all_locations():
     assert all_locations() == [(0,0),(0,1),(0,2),(0,3),(0,4),
