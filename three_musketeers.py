@@ -71,8 +71,20 @@ def adjacent_location(location, direction):
     """Return the location next to the given one, in the given direction.
        Does not check if the location returned is legal on a 5x5 board.
        You can assume that input will always be in correct range."""
-    (row, column) = location
-    return (0,0)
+    
+    if direction == "up":
+        adj_location = (location[0]-1, location[1])
+        return adj_location
+    elif direction == "down":
+        adj_location = (location[0]+1, location[1])
+        return adj_location
+    elif direction == "right":
+        adj_location = (location[0], location[1]+1)
+        return adj_location
+    else:
+        adj_location = (location[0], location[1]-1)
+        return adj_location
+    
 
 def is_legal_move_by_musketeer(location, direction):
     """Tests if the Musketeer at the location can move in the direction.

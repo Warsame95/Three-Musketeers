@@ -58,7 +58,9 @@ def test_all_locations():
     
 
 def test_adjacent_location():
-    assert adjacent_location((0,4),"down") == (1,4)
+    assert adjacent_location((0,4),down) == (1,4)
+    #assert adjacent_location((3,3),"left") == (3,2)
+    #assert adjacent_location((4,1),"up") == (3,1)
     
     
 def test_is_legal_move_by_musketeer():
