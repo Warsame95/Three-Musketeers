@@ -43,7 +43,11 @@ def test_string_to_location():
     #test with correct inputs
 
 def test_location_to_string():
+    with pytest.raises(ValueError):
+        raise ValueError((2,5))
+        raise ValueError((-1,2))
     assert location_to_string((2,2)) == "C3"
+    assert location_to_string((1,4)) == "B5"
 
 def test_at():
      assert at((1,1)) == _

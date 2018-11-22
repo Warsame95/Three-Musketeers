@@ -49,8 +49,6 @@ def string_to_location(s):
         return (axis_converter[s[0]], axis_converter[s[1]])
     else:
         raise ValueError("Invalid input")
-
-
     
 
 def location_to_string(location):
@@ -58,7 +56,16 @@ def location_to_string(location):
     Similarly to the previous function, this function should raise
     ValueError exception if the input is outside of the correct range
     """
-    return ""
+    num = [0,1,2,3,4]
+    x = {0:"A",1:"B",2:"C",3:"D",4:"E"}
+    y = {0:"1",1:"2",2:"3",3:"4",4:"5"}
+    
+    try:
+        user_input = (num.index(location[0]), num.index(location[1]))
+        return x[location[0]] + y[location[1]]
+        
+    except(ValueError):
+        print("Invalid input")
 
 def at(location):
     """Returns the contents of the board at the given location.
