@@ -34,9 +34,11 @@ def test_get_board():
     #eventually add at least one more test with another board
 
 def test_string_to_location():
-    with pytest.raises(KeyError, message = "Invalid location"):
-        string_to_location('X3')
-    assert string_to_location('A0') == (0,0)
+    with pytest.raises(ValueError):
+        raise ValueError("X3")
+        raise ValueError("B6")
+    assert string_to_location("A1") == (0,0)
+    assert string_to_location("C4") == (2,3)
     #eventually add at least one more exception test and two more
     #test with correct inputs
 
@@ -59,8 +61,8 @@ def test_all_locations():
 
 def test_adjacent_location():
     assert adjacent_location((0,4),down) == (1,4)
-    #assert adjacent_location((3,3),"left") == (3,2)
-    #assert adjacent_location((4,1),"up") == (3,1)
+    assert adjacent_location((3,3),"left") == (3,2)
+    assert adjacent_location((4,1),"up") == (3,1)
     
     
 def test_is_legal_move_by_musketeer():

@@ -42,13 +42,15 @@ def string_to_location(s):
        is outside of the correct range (between 'A' and 'E' for s[0] and
        between '1' and '5' for s[1]
        """
-    # s = input()
+    valid_input = "ABCDE12345"
     axis_converter = {"A":0,"B":1,"C":2,"D":3,"E":4,"1":0,"2":1,"3":2,"4":3,"5":4}
 
-    try:
-        return (axis_converter[s[0]],axis_converter[s[1]])
-    except KeyError:
-        print("Invalid location")
+    if s[0] in valid_input and s[1] in valid_input:
+        return (axis_converter[s[0]], axis_converter[s[1]])
+    else:
+        raise ValueError("Invalid input")
+
+
     
 
 def location_to_string(location):
@@ -71,7 +73,7 @@ def adjacent_location(location, direction):
     """Return the location next to the given one, in the given direction.
        Does not check if the location returned is legal on a 5x5 board.
        You can assume that input will always be in correct range."""
-    
+
     if direction == "up":
         adj_location = (location[0]-1, location[1])
         return adj_location
@@ -90,7 +92,7 @@ def is_legal_move_by_musketeer(location, direction):
     """Tests if the Musketeer at the location can move in the direction.
     You can assume that input will always be in correct range. Raises
     ValueError exception if at(location) is not 'M'"""
-    return True
+    piece = at(location)
 
 def is_legal_move_by_enemy(location, direction):
     """Tests if the enemy at the location can move in the direction.
