@@ -103,8 +103,38 @@ def is_legal_move_by_musketeer(location, direction):
     """Tests if the Musketeer at the location can move in the direction.
     You can assume that input will always be in correct range. Raises
     ValueError exception if at(location) is not 'M'"""
-    piece = at(location)
+    M = "M"
+    
+    try:
+        at(location) == M
+    except(ValueError):
+        print("A musketeer is not at this location")
 
+    if direction == "up":
+        adj_location = (location[0]-1, location[1])
+        if at(adj_location) == "R":
+            return True
+        else: return False
+        
+    elif direction == "down":
+        adj_location = (location[0]+1, location[1])
+        if at(adj_location) == "R":
+            return True
+        else: return False
+        
+    elif direction == "right":
+        adj_location = (location[0], location[1]+1)
+        if at(adj_location) == "R":
+            return True
+        else: return False
+        
+    else:
+        adj_location = (location[0], location[1]-1)
+        if at(adj_location) == "R":
+            return True
+        else: return False
+
+ 
 def is_legal_move_by_enemy(location, direction):
     """Tests if the enemy at the location can move in the direction.
     You can assume that input will always be in correct range. Raises

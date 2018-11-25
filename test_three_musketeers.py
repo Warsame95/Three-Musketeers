@@ -70,7 +70,11 @@ def test_adjacent_location():
     
     
 def test_is_legal_move_by_musketeer():
+    with pytest.raises(ValueError):
+        raise ValueError(at((2,1)) == R)
     assert is_legal_move_by_musketeer((2,2),"up") == True
+    assert is_legal_move_by_musketeer((2,2),"down") == False
+    assert is_legal_move_by_musketeer((0,3),"down") == False
     
 def test_is_legal_move_by_enemy():
     assert is_legal_move_by_enemy((0,0),"down") == False
