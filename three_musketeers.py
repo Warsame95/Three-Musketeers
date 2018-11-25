@@ -74,7 +74,11 @@ def at(location):
 
 def all_locations():
     """Returns a list of all 25 locations on the board."""
-    return []
+    every_location = []
+    for i in range(len(board)):
+        for j in range(len(board[i])):
+            every_location.append((i,j))
+    return every_location
 
 def adjacent_location(location, direction):
     """Return the location next to the given one, in the given direction.
