@@ -77,7 +77,15 @@ def test_is_legal_move_by_musketeer():
     assert is_legal_move_by_musketeer((0,3),"down") == False
     
 def test_is_legal_move_by_enemy():
-    assert is_legal_move_by_enemy((0,0),"down") == False
+    with pytest.raises(ValueError):
+        raise ValueError(at((0,0)) == _)
+        raise ValueError(at((4,4)) == _)
+        raise ValueError(ar((2,2)) == M)
+    assert is_legal_move_by_enemy((2,1),"down") == False
+    assert is_legal_move_by_enemy((3,1),"down") == True
+    assert is_legal_move_by_enemy((1,2),"left") == True
+    assert is_legal_move_by_enemy((2,3),"left") == False
+    
 
 def test_is_legal_move():
     assert is_legal_move((0,0), "right") == True
