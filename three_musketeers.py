@@ -112,25 +112,25 @@ def is_legal_move_by_musketeer(location, direction):
 
     if direction == "up":
         adj_location = (location[0]-1, location[1])
-        if at(adj_location) == "R":
+        if at(adj_location) == "R" and adj_location in all_locations():
             return True
         else: return False
         
     elif direction == "down":
         adj_location = (location[0]+1, location[1])
-        if at(adj_location) == "R":
+        if at(adj_location) == "R" and adj_location in all_locations():
             return True
         else: return False
         
     elif direction == "right":
         adj_location = (location[0], location[1]+1)
-        if at(adj_location) == "R":
+        if at(adj_location) == "R" and adj_location in all_locations():
             return True
         else: return False
         
     else:
         adj_location = (location[0], location[1]-1)
-        if at(adj_location) == "R":
+        if at(adj_location) == "R" and adj_location in all_locations():
             return True
         else: return False
 
@@ -147,25 +147,25 @@ def is_legal_move_by_enemy(location, direction):
 
     if direction == "up":
         adj_location = (location[0]-1, location[1])
-        if at(adj_location) == "-" :
+        if at(adj_location) == "-" and adj_location in all_locations():
             return True
         else: return False
         
     elif direction == "down":
         adj_location = (location[0]+1, location[1])
-        if at(adj_location) == "-":
+        if at(adj_location) == "-" and adj_location in all_locations():
             return True
         else: return False
         
     elif direction == "right":
         adj_location = (location[0], location[1]+1)
-        if at(adj_location) == "-":
+        if at(adj_location) == "-" and adj_location in all_locations():
             return True
         else: return False
         
     else:
         adj_location = (location[0], location[1]-1)
-        if at(adj_location) == "-":
+        if at(adj_location) == "-" and adj_location in all_locations():
             return True
         else: return False 
 
@@ -173,7 +173,7 @@ def is_legal_move(location, direction):
     """Tests whether it is legal to move the piece at the location
     in the given direction.
     You can assume that input will always be in correct range."""
-    #I am assuming location given will always be a location of a piece.
+    #I am assuming location given will always be a non-empty location.
 
     if at(location) == "M":
         return is_legal_move_by_musketeer(location, direction)
@@ -184,11 +184,19 @@ def can_move_piece_at(location):
     """Tests whether the player at the location has at least one move available.
     You can assume that input will always be in correct range.
     You can assume that input will always be in correct range."""
-    if location == (2,2):
-        return True
+
+    directions = ["right","left","up","down"]
+    if at(location) == "M" or at(location) == "R":
+        for i in directions:
+            if is_legal_move(location, i)==True:
+                break
+            #else:
+                #continue
+
+        return is_legal_move(location, i)
+                    
     else:
         return False
-
 
 def has_some_legal_move_somewhere(who):
     """Tests whether a legal move exists for player "who" (which must

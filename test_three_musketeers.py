@@ -89,13 +89,17 @@ def test_is_legal_move_by_enemy():
 
 def test_is_legal_move():
     assert is_legal_move((2,2), "right") == True
-    assert is_legal_move((0,3), "left") == False
+    assert is_legal_move((0,3), "up") == False
     assert is_legal_move((3,1), "up") == False
     assert is_legal_move((4,3), "left") == True
 
 def test_can_move_piece_at():
     assert can_move_piece_at((2,2)) == True
     assert can_move_piece_at((0,0)) == False
+    assert can_move_piece_at((0,3)) == False
+    assert can_move_piece_at((4,3)) == True
+    assert can_move_piece_at((2,1)) == True
+    
 
 def test_has_some_legal_move_somewhere():
     set_board(board1)
