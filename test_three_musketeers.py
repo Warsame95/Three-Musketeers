@@ -15,6 +15,13 @@ board1 =  [ [_, _, _, M, _],
             [_, R, _, _, _],
             [_, _, _, R, _] ]
 
+board2 =  [ [_, _, _, M, _],
+            [_, _, R, _, _],
+            [_, R, _, R, _],
+            [_, R, R, _, _],
+            [M, _, _, _, M] ]
+
+
 def test_create_board():
     create_board()
     assert at((0,0)) == R
@@ -105,6 +112,10 @@ def test_has_some_legal_move_somewhere():
     set_board(board1)
     assert has_some_legal_move_somewhere('M') == True
     assert has_some_legal_move_somewhere('R') == True
+    set_board(board2)
+    assert has_some_legal_move_somewhere('M') == False
+    assert has_some_legal_move_somewhere('R') == True
+    
     # Eventually put at least three additional tests here
     # with at least one additional board
 

@@ -112,25 +112,25 @@ def is_legal_move_by_musketeer(location, direction):
 
     if direction == "up":
         adj_location = (location[0]-1, location[1])
-        if at(adj_location) == "R" and adj_location in all_locations():
+        if adj_location in all_locations() and at(adj_location) == "R":
             return True
         else: return False
         
     elif direction == "down":
         adj_location = (location[0]+1, location[1])
-        if at(adj_location) == "R" and adj_location in all_locations():
+        if adj_location in all_locations() and at(adj_location) == "R":
             return True
         else: return False
         
     elif direction == "right":
         adj_location = (location[0], location[1]+1)
-        if at(adj_location) == "R" and adj_location in all_locations():
+        if adj_location in all_locations() and at(adj_location) == "R":
             return True
         else: return False
         
     else:
         adj_location = (location[0], location[1]-1)
-        if at(adj_location) == "R" and adj_location in all_locations():
+        if adj_location in all_locations() and at(adj_location) == "R":
             return True
         else: return False
 
@@ -203,10 +203,23 @@ def has_some_legal_move_somewhere(who):
     be either 'M' or 'R'). Does not provide any information on where
     the legal move is.
     You can assume that input will always be in correct range."""
+    flag = False
+    
     if who == "M":
-        return True
-    else:
-        return False
+        for i in all_locations():
+            if at(i) == "M":
+                if can_move_piece_at(i) == True:
+                    flag = True
+                    break
+            
+    if who == "R":
+        for i in all_locations():
+            if at(i) == "R":
+                if can_move_piece_at(i) == True:
+                    flag = True
+                    break
+        
+    return flag
 
 def possible_moves_from(location):
     """Returns a list of directions ('left', etc.) in which it is legal
