@@ -147,25 +147,25 @@ def is_legal_move_by_enemy(location, direction):
 
     if direction == "up":
         adj_location = (location[0]-1, location[1])
-        if at(adj_location) == "-" and adj_location in all_locations():
+        if adj_location in all_locations() and at(adj_location) == "-":
             return True
         else: return False
         
     elif direction == "down":
         adj_location = (location[0]+1, location[1])
-        if at(adj_location) == "-" and adj_location in all_locations():
+        if adj_location in all_locations() and at(adj_location) == "-":
             return True
         else: return False
         
     elif direction == "right":
         adj_location = (location[0], location[1]+1)
-        if at(adj_location) == "-" and adj_location in all_locations():
+        if adj_location in all_locations() and at(adj_location) == "-":
             return True
         else: return False
         
     else:
         adj_location = (location[0], location[1]-1)
-        if at(adj_location) == "-" and adj_location in all_locations():
+        if adj_location in all_locations() and at(adj_location) == "-":
             return True
         else: return False 
 
@@ -262,7 +262,18 @@ def all_possible_moves_for(player):
     """Returns every possible move for the player ('M' or 'R') as a list
        (location, direction) tuples.
        You can assume that input will always be in correct range."""
-    return []
+    
+    possible_locations = []
+
+    for i in all_locations():
+        if at(i) == player:
+            if len(possible_moves_from(i)) >= 1:    #if there are moves available
+                for j in possible_moves_from(i):    #add directions to the list
+                    possible_locations.append((i,j)) # as a tuple
+
+    return possible_locations
+    
+    
 
 def make_move(location, direction):
     """Moves the piece in location in the indicated direction.

@@ -143,8 +143,16 @@ def test_is_within_board():
     assert is_within_board((0,3), "down") == True
 
 def test_all_possible_moves_for():
-    assert all_possible_moves_for("M") == [(2,3),(3,2),(2,1),(1,2),
-                                           (0,3),(1,4),(3,0),(4,1)]
+    assert all_possible_moves_for("M") == [((1,3),"left"),((1,3),"down"),
+                                           ((2,2),"left"),((2,2),"right"),
+                                           ((2,2),"up")]
+
+    assert all_possible_moves_for("R") == [((1,2),"left"),((1,2),"up"),
+                                           ((2,1),"left"),((2,1),"up"),
+                                           ((2,3),"right"),((2,3),"down"),
+                                           ((3,1),"left"),((3,1),"right"),
+                                           ((3,1),"down"),((4,3),"left"),
+                                           ((4,3),"right"),((4,3),"up")]
     
 def test_make_move():
     if make_move((2,2), "left"):
