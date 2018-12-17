@@ -226,15 +226,28 @@ def possible_moves_from(location):
        for the player at location to move. If there is no player at
        location, returns the empty list, [].
        You can assume that input will always be in correct range."""
-    return []
+
+    directions = ["left","right","up","down"]   #possible directions are added
+    legal_directions = []                       # to legal_directions list
+    if at(location) == "M" or at(location) == "R":
+        for i in directions:
+            if is_legal_move(location, i):
+                legal_directions.append(i)
+                
+        return legal_directions
+    
+    else: return []
+                
+                
+        
+
 
 def is_legal_location(location):
     """Tests if the location is legal on a 5x5 board.
     You can assume that input will be a pair of integer numbers."""
-    if location == (0,0):
+    if location in all_locations():
         return True
-    else:
-        return False
+    else: return False
     
 def is_within_board(location, direction):
     """Tests if the move stays within the boundaries of the board.

@@ -97,6 +97,7 @@ def test_is_legal_move_by_enemy():
 def test_is_legal_move():
     assert is_legal_move((2,2), "right") == True
     assert is_legal_move((0,3), "up") == False
+
     assert is_legal_move((3,1), "up") == False
     assert is_legal_move((4,3), "left") == True
 
@@ -120,12 +121,20 @@ def test_has_some_legal_move_somewhere():
     # with at least one additional board
 
 def test_possible_moves_from():
-    assert possible_moves_from((0,0)) == ["right", "down"]
+    set_board(board1)
+    assert possible_moves_from((2,2)) == ["left","right","up"]
+    assert possible_moves_from((2,1)) == ["left","up"]
+    assert possible_moves_from((0,0)) == []
+    assert possible_moves_from((0,3)) == []
+    
     
 
 def test_is_legal_location():
     assert is_legal_location((2,2)) == True
     assert is_legal_location((1,5)) == False
+    assert is_legal_location((5,2)) == False
+    assert is_legal_location((0,4)) == True
+    assert is_legal_location((-1,4)) == False
 
 def test_is_within_board():
     assert is_within_board((2,2), "left") == True
