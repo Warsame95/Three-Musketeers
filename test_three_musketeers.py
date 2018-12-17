@@ -139,6 +139,8 @@ def test_is_legal_location():
 def test_is_within_board():
     assert is_within_board((2,2), "left") == True
     assert is_within_board((0,0), "up") == False
+    assert is_within_board((0,4), "right") == False
+    assert is_within_board((0,3), "down") == True
 
 def test_all_possible_moves_for():
     assert all_possible_moves_for("M") == [(2,3),(3,2),(2,1),(1,2),

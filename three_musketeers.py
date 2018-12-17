@@ -245,6 +245,7 @@ def possible_moves_from(location):
 def is_legal_location(location):
     """Tests if the location is legal on a 5x5 board.
     You can assume that input will be a pair of integer numbers."""
+    
     if location in all_locations():
         return True
     else: return False
@@ -252,8 +253,11 @@ def is_legal_location(location):
 def is_within_board(location, direction):
     """Tests if the move stays within the boundaries of the board.
     You can assume that input will always be in correct range."""
-    return True
     
+    if adjacent_location(location, direction) in all_locations():
+        return True
+    else: return False
+
 def all_possible_moves_for(player):
     """Returns every possible move for the player ('M' or 'R') as a list
        (location, direction) tuples.
