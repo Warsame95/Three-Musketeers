@@ -238,9 +238,6 @@ def possible_moves_from(location):
     
     else: return []
                 
-                
-        
-
 
 def is_legal_location(location):
     """Tests if the location is legal on a 5x5 board.
@@ -279,8 +276,20 @@ def make_move(location, direction):
     """Moves the piece in location in the indicated direction.
     Doesn't check if the move is legal. You can assume that input will always
     be in correct range."""
-    if make_move((2,2), "left"):
-        board[location[2],location[1]] == "M"
+
+    if direction == "up":
+        board[location[0]-1][location[1]] = at(location)
+        
+    elif direction == "down":
+        board[location[0]+1][location[1]] = at(location)
+        
+    elif direction == "right":
+        board[location[0]][location[1]+1] = at(location)
+        
+    else:
+        board[location[0]][location[1]-1] = at(location)
+        
+    board[location[0]][location[1]] = "-"
 
 def choose_computer_move(who):
     """The computer chooses a move for a Musketeer (who = 'M') or an

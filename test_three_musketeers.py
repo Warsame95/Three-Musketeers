@@ -155,8 +155,13 @@ def test_all_possible_moves_for():
                                            ((4,3),"right"),((4,3),"up")]
     
 def test_make_move():
-    if make_move((2,2), "left"):
-        assert board[location[2],location[1]] == "M"
+    # need more tests
+    make_move((2,2), "left")
+    assert board1 == [[_, _, _, M, _],
+                      [_, _, R, M, _],
+                      [_, M, _, R, _],
+                      [_, R, _, _, _],
+                      [_, _, _, R, _] ]
     
 def test_choose_computer_move():
     assert choose_computer_move("M") == ((2,3) , "right")
