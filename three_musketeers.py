@@ -1,3 +1,4 @@
+import random
 # The Three Musketeers Game
 
 # In all methods,
@@ -291,16 +292,24 @@ def make_move(location, direction):
         
     board[location[0]][location[1]] = "-"
 
+
 def choose_computer_move(who):
     """The computer chooses a move for a Musketeer (who = 'M') or an
        enemy (who = 'R') and returns it as the tuple (location, direction),
        where a location is a (row, column) tuple as usual.
        You can assume that input will always be in correct range."""
-    return ((0,0),"")
+
+    return random.choice(all_possible_moves_for(who))
 
 def is_enemy_win():
     """Returns True if all 3 Musketeers are in the same row or column."""
-    return False
+    lst = []
+    for i in all_locations():
+        if at(i) == "M":
+            lst.append(i)
+    if lst[0][0] == lst[1][0] == lst[2][0] or lst[0][1] == lst[1][1] == lst[2][1]:
+        return True
+    else: return False
 
 #---------- Communicating with the user ----------
 #----you do not need to modify code below unless you find a bug

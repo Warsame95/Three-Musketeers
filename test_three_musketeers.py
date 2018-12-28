@@ -1,3 +1,4 @@
+import random
 import pytest
 from three_musketeers import *
 
@@ -21,6 +22,11 @@ board2 =  [ [_, _, _, M, _],
             [_, R, R, _, _],
             [M, _, _, _, M] ]
 
+board3 = [  [_, _, _, _, M],
+            [_, _, R, _, _],
+            [_, R, _, R, _],
+            [_, R, R, _, M],
+            [_, _, _, _, M] ] 
 
 def test_create_board():
     create_board()
@@ -164,10 +170,13 @@ def test_make_move():
                       [_, _, _, R, _] ]
     
 def test_choose_computer_move():
-    assert choose_computer_move("M") == ((2,3) , "right")
-    assert choose_computer_move("R") == ((0,0) , "down")
+    assert choose_computer_move("M") == ((1,3) , "left")
+    assert choose_computer_move("R") == ((3,1) , "down")
 
 def test_is_enemy_win():
-    assert is_enemy_win() == False 
+    assert is_enemy_win() == False
+    set_board(board3)
+    assert is_enemy_win() == True
+    
 
 
