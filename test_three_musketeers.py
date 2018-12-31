@@ -135,6 +135,9 @@ def test_has_some_legal_move_somewhere():
     set_board(board2)
     assert has_some_legal_move_somewhere('M') == False
     assert has_some_legal_move_somewhere('R') == True
+    set_board(board3)
+    assert has_some_legal_move_somewhere('M') == False
+    assert has_some_legal_move_somewhere('R') == True
     
     # Eventually put at least three additional tests here
     # with at least one additional board
