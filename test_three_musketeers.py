@@ -167,6 +167,8 @@ def test_is_within_board():
     assert is_within_board((0,0), "up") == False
     assert is_within_board((0,4), "right") == False
     assert is_within_board((0,3), "down") == True
+    assert is_within_board((1,0), "left") == False
+    
 
 def test_all_possible_moves_for():
     set_board(board1)
