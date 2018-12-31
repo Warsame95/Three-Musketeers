@@ -111,11 +111,16 @@ def test_is_legal_move():
     set_board(board1)
     assert is_legal_move((2,2), "right") == True
     assert is_legal_move((0,3), "up") == False
-
     assert is_legal_move((3,1), "up") == False
     assert is_legal_move((4,3), "left") == True
+    set_board(board2)
+    assert is_legal_move((4,4), "left") == False
+    assert is_legal_move((4,4), "down") == False
+    assert is_legal_move((3,3), "right") == True
+    
 
 def test_can_move_piece_at():
+    set_board(board1)
     assert can_move_piece_at((2,2)) == True
     assert can_move_piece_at((0,0)) == False
     assert can_move_piece_at((0,3)) == False
