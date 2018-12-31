@@ -26,7 +26,19 @@ board3 = [  [_, _, _, _, M],
             [_, _, R, _, _],
             [_, R, _, R, _],
             [_, R, R, _, M],
-            [_, _, _, _, M] ] 
+            [_, _, _, _, M] ]
+
+board4 = [  [R, R, R, R, M],
+            [R, R, R, R, R],
+            [R, R, M, R, R],
+            [R, R, R, R, R],
+            [_, M, R, R, R] ]
+
+board5 = [  [_, _, _, _, M],
+            [_, _, R, _, _],
+            [_, R, _, R, M],
+            [_, R, R, _, _],
+            [_, _, _, M, _] ]
 
 def test_create_board():
     create_board()
@@ -194,9 +206,10 @@ def test_make_move():
                       [_, _, _, R, _] ]
     
 def test_choose_computer_move():
-    set_board(board1)
-    assert choose_computer_move("M") == ((1,3) , "left")
-    assert choose_computer_move("R") == ((3,1) , "down")
+    set_board(board5)
+    assert choose_computer_move("M") == ((2,4) , "left")
+    set_board(board4)
+    assert choose_computer_move("R") == ((3,0) , "down")
 
 def test_is_enemy_win():
     set_board(board1)
