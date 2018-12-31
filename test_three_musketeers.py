@@ -67,6 +67,8 @@ def test_at():
      assert at((4,3)) == R
      assert at((2,2)) == M
      assert at((0,3)) == M
+     set_board(board2)
+     assert at((3,2)) == R
 
 def test_all_locations():
     assert all_locations() == [(0,0),(0,1),(0,2),(0,3),(0,4),
@@ -77,6 +79,7 @@ def test_all_locations():
     
 
 def test_adjacent_location():
+    set_board(board1)
     assert adjacent_location((0,4),down) == (1,4)
     assert adjacent_location((3,3),"left") == (3,2)
     assert adjacent_location((4,1),"up") == (3,1)
