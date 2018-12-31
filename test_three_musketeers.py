@@ -148,6 +148,8 @@ def test_possible_moves_from():
     assert possible_moves_from((2,1)) == ["left","up"]
     assert possible_moves_from((0,0)) == []
     assert possible_moves_from((0,3)) == []
+    set_board(board2)
+    assert possible_moves_from((3,2)) == ["right","up","down"]
     
     
 
