@@ -111,29 +111,35 @@ def is_legal_move_by_musketeer(location, direction):
     except(ValueError):
         print("A musketeer is not at this location")
 
-    if direction == "up":
-        adj_location = (location[0]-1, location[1])
-        if adj_location in all_locations() and at(adj_location) == "R":
-            return True
-        else: return False
-        
-    elif direction == "down":
-        adj_location = (location[0]+1, location[1])
-        if adj_location in all_locations() and at(adj_location) == "R":
-            return True
-        else: return False
-        
-    elif direction == "right":
-        adj_location = (location[0], location[1]+1)
-        if adj_location in all_locations() and at(adj_location) == "R":
-            return True
-        else: return False
-        
-    else:
-        adj_location = (location[0], location[1]-1)
-        if adj_location in all_locations() and at(adj_location) == "R":
-            return True
-        else: return False
+
+    if adjacent_location(location, direction) in all_locations() and at(adjacent_location(location, direction)) == "R":
+        return True
+
+    else: return False
+
+##    if direction == "up":
+##        adj_location = (location[0]-1, location[1])
+##        if adj_location in all_locations() and at(adj_location) == "R":
+##            return True
+##        else: return False
+##        
+##    elif direction == "down":
+##        adj_location = (location[0]+1, location[1])
+##        if adj_location in all_locations() and at(adj_location) == "R":
+##            return True
+##        else: return False
+##        
+##    elif direction == "right":
+##        adj_location = (location[0], location[1]+1)
+##        if adj_location in all_locations() and at(adj_location) == "R":
+##            return True
+##        else: return False
+##        
+##    else:
+##        adj_location = (location[0], location[1]-1)
+##        if adj_location in all_locations() and at(adj_location) == "R":
+##            return True
+##        else: return False
 
  
 def is_legal_move_by_enemy(location, direction):
