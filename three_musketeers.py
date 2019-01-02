@@ -243,17 +243,7 @@ def make_move(location, direction):
     Doesn't check if the move is legal. You can assume that input will always
     be in correct range."""
 
-    if direction == "up":
-        board[location[0]-1][location[1]] = at(location)
-        
-    elif direction == "down":
-        board[location[0]+1][location[1]] = at(location)
-        
-    elif direction == "right":
-        board[location[0]][location[1]+1] = at(location)
-        
-    else:
-        board[location[0]][location[1]-1] = at(location)
+    board[adjacent_location(location, direction)[0]][adjacent_location(location, direction)[1]] = at(location) 
         
     board[location[0]][location[1]] = "-"
 
