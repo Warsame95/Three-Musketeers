@@ -111,7 +111,7 @@ def is_legal_move_by_musketeer(location, direction):
     except(ValueError):
         print("A musketeer is not at this location")
 
-
+    #Checks if location is within the board and if the location is occupied by an enemy (R).
     if adjacent_location(location, direction) in all_locations() and at(adjacent_location(location, direction)) == "R":
         return True
 
@@ -126,9 +126,9 @@ def is_legal_move_by_enemy(location, direction):
     try:
         at(location) == "R"
     except(ValueError):
-        print("A musketeer is not at this location")
-
-
+        print("An Enemy is not at this location")
+        
+    #Checks if location is within the board and if the location is empty.
     if adjacent_location(location, direction) in all_locations() and at(adjacent_location(location, direction)) == "-":
         return True
     
@@ -139,7 +139,6 @@ def is_legal_move(location, direction):
     """Tests whether it is legal to move the piece at the location
     in the given direction.
     You can assume that input will always be in correct range."""
-    #I am assuming location given will always be a non-empty location.
 
     if at(location) == "M":
         return is_legal_move_by_musketeer(location, direction)
@@ -171,6 +170,10 @@ def has_some_legal_move_somewhere(who):
     You can assume that input will always be in correct range."""
     flag = False
     
+    # Checks through all locations to find a player.
+    # Whenever a player is found, location of the player
+    # is passed into the can_move_piece_at function, to
+    # find if there is atleast a move available.
     if who == "M":
         for i in all_locations():
             if at(i) == "M":
@@ -230,9 +233,9 @@ def all_possible_moves_for(player):
 
     for i in all_locations():
         if at(i) == player:
-            if len(possible_moves_from(i)) >= 1:    #if there are moves available
-                for j in possible_moves_from(i):    #add directions to the list
-                    possible_locations.append((i,j)) # as a tuple
+            if len(possible_moves_from(i)) >= 1:     #if there are moves available
+                for j in possible_moves_from(i):     #add location & directions
+                    possible_locations.append((i,j)) #to the list as a tuple
 
     return possible_locations
     
@@ -242,6 +245,7 @@ def make_move(location, direction):
     """Moves the piece in location in the indicated direction.
     Doesn't check if the move is legal. You can assume that input will always
     be in correct range."""
+    
 
     board[adjacent_location(location, direction)[0]][adjacent_location(location, direction)[1]] = at(location) 
         
@@ -253,6 +257,7 @@ def choose_computer_move(who):
        enemy (who = 'R') and returns it as the tuple (location, direction),
        where a location is a (row, column) tuple as usual.
        You can assume that input will always be in correct range."""
+    #Selects a random move from all possible moves available for the player.
 
     return random.choice(all_possible_moves_for(who))
 
