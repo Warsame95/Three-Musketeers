@@ -1,5 +1,6 @@
 import random
 import pickle
+import os
 # The Three Musketeers Game
 
 # In all methods,
@@ -279,8 +280,8 @@ def save():
     pickle.dump(users_side, open("user.txt", "wb"))
 
 def load():
-    load_game = input("If there is a previous game that you would "
-                      "like to load,\ntype in 'YES', "
+    load_game = input("If you would like to load a previous game, "
+                      "\ntype in 'YES', "
                       "otherwise type in 'NO' ").upper()
 
     if load_game == "YES":
@@ -414,7 +415,18 @@ def describe_move(who, location, direction):
 def start():
     """Plays the Three Musketeers Game."""
     global users_side
-    load()
+    # convert directory to a string
+    # then replace all '\\' with '/'
+    # because python only recognises directories with '/'
+    # therefore measures must be taken so that it can work (save) on
+    # Windows aswell as Mac.
+    
+    directory = str(os.getcwd())
+    directory.replace('\\','/')
+    exists1 = os.path.isfile(directory+'/user.txt')
+    exists2 = os.path.isfile(directory+'/board.txt')
+    if exists1 and exists2:
+        load() 
     users_side = choose_users_side()
     board = create_board()
     print_instructions()
@@ -423,7 +435,7 @@ def start():
         if has_some_legal_move_somewhere('M'):
             board = move_musketeer(users_side)
             print_board()
-            
+            save()
             if is_enemy_win():
                 print("Cardinal Richleau's men win!")
                 break
@@ -444,7 +456,7 @@ def continue_as_musketeer():
         if has_some_legal_move_somewhere('M'):
             board = move_musketeer(users_side)
             print_board()
-            
+            save()
             if is_enemy_win():
                 print("Cardinal Richleau's men win!")
                 break
