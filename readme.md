@@ -16,7 +16,7 @@
     <p>There are 2 files that play the game, 'three_musketeers' and 'three_muskteers_with_files'. The latter automatically saves the game after every move.</p>
     <p>To start a game, type in start(). You should then be given the option to either play as a Musketeer(M) or an Enemy(R).</p>
     <p>Once you have selected what to play as, a board should appear along with instructions on how to move your piece.</p>
-    <p>If you are using playing on the 'three_musketeers_with_files' file, then you can kill the program at any time and, if you want, continue to play from where you left when you start another game</p>
+    <p>If you are playing on the 'three_musketeers_with_files' file, then you can kill the program at any time and, if you want, continue to play from where you left when you start another game</p>
     <h3>Support</h3>
     <p>If you are having troubles running the game on your machine, have encountered any bugs or have a general query, please email me at 
     warsameahmed95@gmail.com</p>
